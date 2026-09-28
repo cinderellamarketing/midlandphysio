@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capsule CRM Guide - Midland Physiotherapy</title>
+<style>
+  :root{
+    --primary:#662D91;
+    --dark:#3C1858;
+    --light:#F0E6F6;
+    --ink:#1f1a24;
+    --muted:#5c5566;
+    --line:#e7dff0;
+    --bg:#faf8fc;
+    --white:#ffffff;
+    --warn-bg:#fff4e6;
+    --warn-line:#f0b060;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:16px;
+  }
+  a{color:var(--primary);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
+
+  header{
+    background:linear-gradient(135deg,var(--primary),var(--dark));
+    color:#fff;
+    padding:44px 0 40px;
+  }
+  header .wrap{padding-top:0;}
+  .brand{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin:0 0 14px;}
+  header h1{font-size:30px;line-height:1.25;margin:0 0 10px;font-weight:700;}
+  header p.sub{margin:0;font-size:17px;opacity:.92;max-width:640px;}
+  .meta{margin-top:22px;font-size:14px;opacity:.85;}
+
+  nav.tabs{
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:20;
+  }
+  nav.tabs .wrap{display:flex;gap:6px;padding-top:0;padding-bottom:0;}
+  .tab{
+    appearance:none;border:0;background:none;cursor:pointer;
+    font:inherit;font-weight:600;color:var(--muted);
+    padding:16px 18px;border-bottom:3px solid transparent;
+    margin-bottom:-1px;
+  }
+  .tab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--primary);}
+  .tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}
+
+  main{padding:34px 0 60px;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .lead{font-size:17px;color:var(--muted);margin:0 0 26px;}
+
+  .sec{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin:0 0 14px;
+    overflow:hidden;
+  }
+  .sec>summary{
+    list-style:none;cursor:pointer;
+    padding:18px 20px;
+    display:flex;align-items:center;gap:14px;
+    font-weight:700;font-size:17px;color:var(--dark);
+  }
+  .sec>summary::-webkit-details-marker{display:none;}
+  .sec>summary .n{
+    flex:0 0 auto;width:28px;height:28px;border-radius:50%;
+    background:var(--light);color:var(--primary);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:700;
+  }
+  .sec>summary .chev{margin-left:auto;color:var(--primary);transition:transform .2s;font-size:14px;}
+  .sec[open]>summary .chev{transform:rotate(90deg);}
+  .sec .body{padding:2px 20px 22px;border-top:1px solid var(--line);}
+  .sec .body>*:first-child{margin-top:16px;}
+
+  h3.mini{font-size:15px;color:var(--primary);margin:22px 0 6px;text-transform:uppercase;letter-spacing:.04em;}
+  p{margin:0 0 14px;}
+  ul{margin:0 0 14px;padding-left:20px;}
+  li{margin:0 0 8px;}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:15px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:var(--light);color:var(--dark);font-weight:700;}
+  tr:last-child td{border-bottom:0;}
+
+  .box{border-radius:10px;padding:14px 16px;margin:16px 0;font-size:15px;}
+  .tip{background:var(--light);border:1px solid var(--line);}
+  .tip strong{color:var(--primary);}
+  .warn{background:var(--warn-bg);border:1px solid var(--warn-line);}
+
+  .cta{
+    display:inline-block;background:var(--primary);color:#fff;text-decoration:none;
+    font-weight:700;padding:14px 26px;border-radius:10px;margin:8px 0 4px;
+  }
+  .cta:hover{background:var(--dark);}
+
+  .videowrap{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:0 0 22px;background:#000;}
+  .videowrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
+  footer{border-top:1px solid var(--line);background:var(--white);padding:26px 0;color:var(--muted);font-size:14px;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;}
+  footer .dot{color:var(--primary);font-weight:700;}
+
+  @media(max-width:600px){
+    header h1{font-size:24px;}
+    .tab{padding:14px 12px;}
+    .wrap{padding:0 16px;}
+  }
+
+  .search{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:var(--white);color:var(--ink);margin:0 0 8px;}
+  .search:focus{outline:2px solid var(--primary);outline-offset:1px;}
+  .searchnote{font-size:13px;color:var(--muted);margin:0 0 22px;}
+  .pill{display:inline-block;background:var(--light);color:var(--primary);font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin:0 4px 4px 0;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="brand">Time Assist</p>
+    <h1>Capsule CRM Guide</h1>
+    <p class="sub">How your Capsule is set up and how to run it, with your session recordings.</p>
+    <div class="meta">Prepared for Jay Moore &nbsp;·&nbsp; Midland Physiotherapy</div>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <div class="wrap">
+    <button class="tab" id="tab-guide" role="tab" aria-selected="true" aria-controls="panel-guide">Guide</button>
+    <button class="tab" id="tab-sessions" role="tab" aria-selected="false" aria-controls="panel-sessions">Sessions</button>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <section class="panel active" id="panel-guide" role="tabpanel" aria-labelledby="tab-guide">
+<p class="lead">Your Capsule account is open and Jaanika is setting it up now, based on the setup session. Once the build is done, this guide will show exactly how your Capsule is set up and how to run it day to day. For now it covers what Capsule is for in your business and the details of your account.</p>
+<input type="text" class="search" id="guideSearch" placeholder="Search the guide (e.g. plan, trial, patients)...">
+<p class="searchnote">Type to filter the sections below. Clear the box to see everything.</p>
+<div id="guideSections">
+
+<details class="sec" open>
+<summary><span class="n">1</span> What Capsule is for in your business <span class="chev">▸</span></summary>
+<div class="body">
+<p>Capsule sits alongside your practice management system, not instead of it. Patients, clinical notes and patient reporting stay where they are now. Capsule holds the business side of the practice:</p>
+<ul>
+<li>Everyone you meet through networking, not only the people you end up working with</li>
+<li>Your referral partners, and how those relationships are developing</li>
+<li>The growth activity you do each week, such as one-to-ones, networking and content, so you can look back and see what has moved the business forward</li>
+</ul>
+<p>Keeping the two apart was your call, and it means neither system gets cluttered with the other's contacts or skews the other's reporting.</p>
+</div>
+</details>
+
+<details class="sec">
+<summary><span class="n">2</span> Your account and plan <span class="chev">▸</span></summary>
+<div class="body">
+<p>Your account is with Capsule directly, in your name. You own the login and the data, and Capsule bills you.</p>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>Plan</td><td>Starter, paid monthly, £17 per user per month</td></tr>
+<tr><td>Free trial</td><td>14 days from the day the account was opened</td></tr>
+<tr><td>Pipelines</td><td>Starter includes one sales pipeline. More than one needs the next plan up, at £32 per user per month</td></tr>
+<tr><td>Payment card</td><td>Account Settings, then Account and Plan, then add a card</td></tr>
+</table>
+<div class="box tip"><strong>Tip:</strong> the account needs a card on it to carry on after the trial. Adding it now does not start charging early. Nothing is taken until the 14 days are up.</div>
+<h3 class="mini">Your Capsule web address</h3>
+<p>Because you had a Capsule account in the past, your new web address has a slightly different ending from the one you might expect. Bookmark it in your browser so you always land in the right place.</p>
+<h3 class="mini">On your phone and iPad</h3>
+<p>Capsule has a mobile app, so you can look up a contact or log a one-to-one away from the laptop.</p>
+</div>
+</details>
+
+<details class="sec">
+<summary><span class="n">3</span> What happens next <span class="chev">▸</span></summary>
+<div class="body">
+<p>Jaanika is building your Capsule around what you covered in the setup session: your one-to-one process, your networking groups, your referral partners and what you want to track on them.</p>
+<p>At the walkthrough session she will take you through what has been built and how, and show you how to add and change fields, tags and activity types yourself, so you can adjust it as the business changes. This guide will be filled in after that session.</p>
+</div>
+</details>
+
+</div>
+    </section>
+
+    <section class="panel" id="panel-sessions" role="tabpanel" aria-labelledby="tab-sessions">
+<p class="lead">Each session is recorded here with the key points and the actions agreed. More are added after each call.</p>
+
+<details class="sec">
+<summary><span class="n">1</span> Capsule demo — 15 September 2026 <span class="chev">▸</span></summary>
+<div class="body">
+<div class="videowrap">
+<iframe data-src="https://www.loom.com/embed/55fd7837a2254789b9750c476553cd1e" allowfullscreen title="Session 1 recording"></iframe>
+</div>
+<h3 class="mini">What we covered</h3>
+<ul>
+<li>A walkthrough of a demo Capsule account set up around your referral partnerships and networking, with sample data in it.</li>
+<li>Keeping patients in your practice management system and using Capsule for the business side only.</li>
+<li>How referral partners and potential patients could sit in a sales pipeline, and whether they need a value.</li>
+<li>Logging growth activities, and using goals and reports to see what each week has achieved.</li>
+<li>The mobile app, the Outlook sidebar, Capsule plans, and how the implementation works.</li>
+</ul>
+<h3 class="mini">Notes</h3>
+<p><strong>Contacts and referral partners.</strong> In the demo, every contact had fields for their networking group, the date of your last one-to-one and the number of referrals received. A referral partner tag added a second set of fields, partner type, relationship stage and next action, which only appear on contacts that carry the tag. That keeps ordinary contacts uncluttered.</p>
+<p><strong>Two kinds of opportunity.</strong> You want both in view: referral partnerships, and individuals from networking who may become patients. A referral partnership has no fixed value, so it is measured by how many you convert. A potential patient can carry an average value, knowing that two patients with the same condition may need a different number of sessions. Two ways of handling this were shown: one pipeline with each opportunity tagged as a referral partner or potential patient so you can filter between them, or two separate pipelines, which needs the higher Capsule plan.</p>
+<p><strong>Activities, goals and reports.</strong> The activity types are deliberately descriptive so you can report on what you did by type over any period. Goals look forward, for example an activity goal of two one-to-ones a month, and reports look back. Activity that is not about another person, such as publishing a blog, can be logged against your own contact record.</p>
+<p>A one-to-one is logged as an activity. You can type notes live, or photograph handwritten notes and attach the photo, then add any follow-up as a task. Pinning a note keeps it at the top of the record, so the next one-to-one with that person picks up where the last one left off.</p>
+<p>Tasks show as a list and in the calendar. The schedule view shows your week, and you can drag tasks to a different day when networking or clinics fill it up.</p>
+<p>With Office 365, the Outlook sidebar lets you file emails against a contact, send email from Capsule and add tasks straight from your inbox. Capsule also has a mobile app for phone and iPad.</p>
+<p>Once it is built, you will be able to add and change activity types, custom fields and tags yourself, for example a new growth activity that was not on your original list.</p>
+<h3 class="mini">Plans and implementation</h3>
+<p>Capsule starts at £17 per user per month with one pipeline, and multiple pipelines are £32. Your account is directly with Capsule. Jaanika is a Capsule affiliate, which makes no difference to what you pay.</p>
+<p>The implementation is £500 and covers a detailed session on your processes, the build including an initial data import, and a walkthrough session. It runs on an agreement and NDA, invoiced up front.</p>
+<h3 class="mini">Actions</h3>
+<h3 class="mini" style="color:var(--primary)">Jay</h3>
+<ul>
+<li>Think through a typical one-to-one, a typical referral partner, the actions that follow each, and the types of contact you deal with, ready for the setup session. Nothing needs sending in advance.</li>
+</ul>
+<h3 class="mini" style="color:var(--primary)">Jaanika</h3>
+<ul>
+<li>Send the agreement, NDA and invoice.</li>
+<li>Send the invite for the setup session on 24 September (done on the call).</li>
+</ul>
+</div>
+</details>
+
+<details class="sec" open>
+<summary><span class="n">2</span> Setup session — 24 September 2026 <span class="chev">▸</span></summary>
+<div class="body">
+<div class="videowrap">
+<iframe data-src="https://www.loom.com/embed/d4e4978b732c491e8eb197fb7cc39acc" allowfullscreen title="Session 2 recording"></iframe>
+</div>
+<h3 class="mini">What we covered</h3>
+<ul>
+<li>Opened your Capsule account on the Starter plan and showed where to add your card.</li>
+<li>Your one-to-one process and the follow-ups that come out of it.</li>
+<li>The networking groups you are part of.</li>
+<li>Your referral partners: who they are, how a partnership forms, and what you want to track.</li>
+<li>Where contacts who are a way in, rather than a partner, should sit.</li>
+</ul>
+<h3 class="mini">Notes</h3>
+<p><strong>Your account.</strong> Starter plan, paid monthly, with a 14-day free trial. Add a card under Account Settings, then Account and Plan. Nothing is charged until the trial ends. Your previous Capsule account is closed, which is why the new web address has a slightly different ending, so bookmark it.</p>
+<p><strong>One-to-ones.</strong> You arrange them by message, email, phone or in person, and you would rather type notes live on your laptop and save them than keep a notebook. Follow-ups, such as adding someone to a WhatsApp group or making an introduction, can be set as tasks in Capsule, since you prefer electronic reminders to a notebook. Introductions do not need a separate system: a short note on the contact, such as "Intro to" and the name, is date and time stamped, so six months later you can ask how it went.</p>
+<p><strong>Networking groups.</strong> BNI, and Pro Networking, which you have recently joined and which brings you people outside BNI. Groups you are only visiting go down as Other until you join them.</p>
+<p>Referral partners come mainly through networking, plus partners you already work with across the clinics, some for many years, and direct approaches, such as a spinal surgeon who replied to an email and asked to meet. The types include podiatrists, anaesthetists, sports medicine doctors, GPs, personal trainers, sports massage therapists and sports clubs, and the list will grow as new ones come on board.</p>
+<p>A partnership forms through an approach, a call or meeting, sometimes an in-person follow-up, and then an informal arrangement to refer to each other when it is clinically appropriate. There is no formal agreement and no numbers attached, and as regulated professionals there is no financial incentive. Contact carries on through progress updates and discharge summaries sent back to the referrer.</p>
+<p>What you want to see on each partner is how many patients have come from them and how long the relationship has run. The start of the relationship will be recorded as the month and year it was agreed, so you can see its length at a glance without opening the record. Some partners will refer rarely or not at all, and a relationship can be silent for months before a referral arrives, which is normal.</p>
+<p>Contacts who are a way in rather than a partner, such as people at a football club where you sponsor a player, stay as contacts with tasks against them and do not go into the pipeline.</p>
+<p>You use a Mac, with Mac Mail for email and Dropbox for files. Your contacts are currently on business cards and place mats, and you will add them to Capsule yourself.</p>
+<h3 class="mini">Actions</h3>
+<h3 class="mini" style="color:var(--primary)">Jay</h3>
+<ul>
+<li>Add a card under Account Settings, then Account and Plan, before the trial ends.</li>
+<li>Bookmark your Capsule web address.</li>
+<li>Add your contacts from business cards and place mats.</li>
+</ul>
+<h3 class="mini" style="color:var(--primary)">Jaanika</h3>
+<ul>
+<li>Set up your Capsule based on this session.</li>
+<li>Walk you through the build on Thursday 1 October, 11:15 to 12:15.</li>
+</ul>
+</div>
+</details>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Time Assist <span class="dot">·</span> Capsule CRM setup and enablement</span>
+    <a class="cta" style="padding:10px 18px;font-size:14px;" href="https://app.simplymeet.me/time-assist/set-up" target="_blank" rel="noopener">Book a session</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    function loadOpenVideos(){
+      document.querySelectorAll('.panel.active details[open] iframe[data-src]').forEach(function(f){
+        if(!f.getAttribute('src')){f.setAttribute('src',f.getAttribute('data-src'));}
+      });
+    }
+    document.querySelectorAll('.tab').forEach(function(t){
+      t.addEventListener('click',function(){
+        document.querySelectorAll('.tab').forEach(function(x){
+          x.setAttribute('aria-selected','false');
+          var p=document.getElementById(x.getAttribute('aria-controls'));
+          if(p){p.classList.remove('active');}
+        });
+        t.setAttribute('aria-selected','true');
+        var panel=document.getElementById(t.getAttribute('aria-controls'));
+        if(panel){panel.classList.add('active');}
+        window.scrollTo({top:0,behavior:'smooth'});
+        loadOpenVideos();
+      });
+    });
+    document.querySelectorAll('details.sec').forEach(function(d){
+      d.addEventListener('toggle',loadOpenVideos);
+    });
+    var gs=document.getElementById('guideSearch');
+    if(gs){gs.addEventListener('input',function(){
+      var q=this.value.toLowerCase().trim();
+      document.querySelectorAll('#guideSections details.sec').forEach(function(sec){
+        var t=sec.textContent.toLowerCase();
+        sec.style.display=(q===''||t.indexOf(q)>-1)?'':'none';
+      });
+    });}
+    loadOpenVideos();
+  })();
+</script>
+</body>
+</html>
